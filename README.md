@@ -46,7 +46,7 @@ Aplicativo Android feito em Kotlin para cadastrar e consultar produtos com persi
 
 ![Tela inicial](docs/prints/telaLogin.PNG)
 
-![LogCat](docs/prints/logcat.png)
+![LogCat](docs/prints/logcat.PNG)
 
 
 ## Parte A: Complemento prático
@@ -77,11 +77,11 @@ private fun clearProductFields() {
 
 O método é chamado somente no caminho de sucesso da inserção. Após preencher os campos e cadastrar um produto, tire um print mostrando os campos limpos.
 
-![A1p1](docs/prints/A1 1.png)
+![A1p1](docs/prints/A1 1.PNG)
 
 Após clicar em cadastrar:
 
-![A1p2](docs/prints/A1 2.png)
+![A1p2](docs/prints/A1 2.PNG)
 
 ### A2. Validação de preço
 
@@ -111,7 +111,7 @@ private fun parsePrice(value: String): Double? =
 
 Tire um print tentando cadastrar com preço `0` ou vazio, mostrando a mensagem no campo.
 
-![A2](docs/prints/A2.png)
+![A2](docs/prints/A2.PNG)
 
 ### A3. Lista de produtos na tela
 
@@ -145,7 +145,7 @@ private fun listProducts() {
 
 Tire um print com pelo menos dois produtos aparecendo na lista da tela.
 
-![A3](docs/prints/A3.png)
+![A3](docs/prints/A3.PNG)
 
 ### A4. Total do estoque
 
@@ -173,7 +173,7 @@ binding.textSummary.text = buildString {
 
 Tire um print da lista com os indicadores numéricos visíveis. Ao fazer uma busca, os totais correspondem aos resultados mostrados; ao listar todos, correspondem ao cadastro inteiro.
 
-![A4](docs/prints/A3.png)
+![A4](docs/prints/A3.PNG)
 
 ### A5. Buscar por nome
 
@@ -205,7 +205,7 @@ lifecycleScope.launch {
 
 Tire um print de uma busca que encontre um produto pelo nome ou por parte dele.
 
-![A5](docs/prints/A5.png)
+![A5](docs/prints/A5.PNG)
 
 ### A6. Excluir produtos
 
@@ -237,7 +237,7 @@ productDao.delete(product)
 
 Tire prints dos botões de exclusão e, se possível, do diálogo de confirmação ou da lista depois da exclusão. Faça isso em um ambiente de teste, pois apagar registros é uma ação destrutiva.
 
-![A6](docs/prints/A6.png)
+![A6](docs/prints/A6.PNG)
 
 ### A7. Atualizar produto
 
@@ -269,7 +269,7 @@ productDao.update(current.copy(price = newPrice))
 
 Tire um print mostrando o ID usado e a lista após a alteração do preço.
 
-![A7](docs/prints/A7.png)
+![A7](docs/prints/A7.PNG)
 
 ### A8. Novo campo na tabela: quantidade
 
@@ -295,7 +295,7 @@ abstract class AppDatabase : RoomDatabase()
 
 **O que acontece com dados de uma versão anterior:** este projeto usa `fallbackToDestructiveMigration()` para simplificar o exercício. Se um aparelho já tiver o banco da versão 1 e o app for atualizado para a versão 2 sem uma migração definida, o Room recriará a tabela e os dados antigos serão apagados. Em produção, seria necessário criar uma `Migration` que adicione a coluna `quantity` preservando os registros, ou definir uma estratégia explícita para os dados.
 
-![A8](docs/prints/A8.png)
+![A8](docs/prints/A8.PNG)
 
 ## Parte B: Questões dissertativas
 
