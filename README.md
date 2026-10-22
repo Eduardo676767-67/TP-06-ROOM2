@@ -44,7 +44,7 @@ Aplicativo Android feito em Kotlin para cadastrar e consultar produtos com persi
 
 ## Prints do app
 
-![Tela inicial](docs/prints/telaLogin.png)
+![Tela inicial](docs/prints/telaLogin.PNG)
 
 ![LogCat](docs/prints/logcat.png)
 
