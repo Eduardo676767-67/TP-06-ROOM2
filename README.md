@@ -1,9 +1,9 @@
 # AppRoomProduto: Cadastro de Produtos com Room SQLite
 
-**Alunos:** `Eduardo Santos Nascimento`  `Pedro Ravazzani e Silva`
-**RA:** `241590`  `242904`
+**Aluno(a):** `[preencha seu nome completo]`  
+**RA:** `[preencha seu RA]`  
 **Disciplina:** Programação para Dispositivos Móveis  
-
+**Professor(a):** `[preencha o nome do professor]`
 
 ## Sobre o projeto
 
@@ -31,8 +31,8 @@ Aplicativo Android feito em Kotlin para cadastrar e consultar produtos com persi
 
 ## Prints do app
 
-![Tela inicial](docs/prints/telaLogin.png)
-![LogCat](docs/prints/logcat.png)
+Depois de executar o app no emulador ou em um celular, salve **capturas reais** nesta pasta: `docs/prints/`. Ainda não há capturas anexadas porque elas precisam ser obtidas depois de executar o projeto no Android Studio.
+
 Sugestão de nomes para os arquivos:
 
 - `tela-inicial.png`
@@ -66,9 +66,6 @@ private fun clearProductFields() {
 
 O método é chamado somente no caminho de sucesso da inserção. Após preencher os campos e cadastrar um produto, tire um print mostrando os campos limpos.
 
-![A1p1](docs/prints/A1 1.png)
-Pos clicar em cadastrar:
-![A1p2](docs/prints/A1 2.png)
 ### A2. Validação de preço
 
 **O que foi feito:** o preço é convertido para número aceitando ponto ou vírgula decimal. Se estiver vazio, inválido, igual a zero ou negativo, o cadastro é interrompido e o erro aparece no campo.
@@ -88,7 +85,7 @@ private fun parsePrice(value: String): Double? =
 ```
 
 Tire um print tentando cadastrar com preço `0` ou vazio, mostrando a mensagem no campo.
-![A2](docs/prints/A2.png)
+
 ### A3. Lista de produtos na tela
 
 **O que foi feito:** a consulta usa o DAO e exibe os registros no `TextView` `textProducts`, em vez de depender apenas do Logcat. Cada item mostra ID, nome, preço, quantidade e descrição.
@@ -110,7 +107,7 @@ private fun listProducts() {
 ```
 
 Tire um print com pelo menos dois produtos aparecendo na lista da tela.
-![A3](docs/prints/A3.png)
+
 ### A4. Total do estoque
 
 **O que foi feito:** junto da lista, a tela mostra quantos registros estão sendo exibidos, a soma dos preços unitários e o valor estimado do estoque (preço multiplicado pela quantidade).
@@ -128,7 +125,7 @@ binding.textSummary.text = buildString {
 ```
 
 Tire um print da lista com os indicadores numéricos visíveis. Ao fazer uma busca, os totais correspondem aos resultados mostrados; ao listar todos, correspondem ao cadastro inteiro.
-![A4](docs/prints/A3.png)
+
 ### A5. Buscar por nome
 
 **O que foi feito:** foi criada uma consulta `LIKE` no DAO. A tela recebe parte do nome e acrescenta `%` antes e depois do texto para retornar correspondências parciais.
@@ -149,7 +146,7 @@ lifecycleScope.launch {
 ```
 
 Tire um print de uma busca que encontre um produto pelo nome ou por parte dele.
-![A5](docs/prints/A5.png)
+
 ### A6. Excluir produtos
 
 **O que foi feito:** o botão de exclusão geral pede confirmação antes de apagar todos os registros. Também existe exclusão individual por ID, buscando a entidade e removendo-a com `@Delete`.
@@ -171,7 +168,7 @@ productDao.delete(product)
 ```
 
 Tire prints dos botões de exclusão e, se possível, do diálogo de confirmação ou da lista depois da exclusão. Faça isso em um ambiente de teste, pois apagar registros é uma ação destrutiva.
-![A6](docs/prints/A6.png)
+
 ### A7. Atualizar produto
 
 **O que foi feito:** para atualizar, o app recebe o ID e o novo preço, procura o produto existente e grava uma cópia dele com o preço alterado usando `@Update`.
@@ -193,7 +190,7 @@ productDao.update(current.copy(price = newPrice))
 ```
 
 Tire um print mostrando o ID usado e a lista após a alteração do preço.
-![A7](docs/prints/A7.png)
+
 ### A8. Novo campo na tabela: quantidade
 
 **O que foi feito:** a entidade `Product` ganhou o campo `quantity: Int` e a tela ganhou um campo para informar o estoque. A versão do banco foi elevada para `2`.
@@ -212,11 +209,11 @@ abstract class AppDatabase : RoomDatabase()
 
 **O que acontece com dados de uma versão anterior:** este projeto usa `fallbackToDestructiveMigration()` para simplificar o exercício. Se um aparelho já tiver o banco da versão 1 e o app for atualizado para a versão 2 sem uma migração definida, o Room recriará a tabela e os dados antigos serão apagados. Em produção, seria necessário criar uma `Migration` que adicione a coluna `quantity` preservando os registros, ou definir uma estratégia explícita para os dados.
 
+Tire um print cadastrando um produto com uma quantidade e exibindo essa quantidade na lista.
 
-![A8](docs/prints/A8.png)
 ## Parte B: Questões dissertativas
 
-
+> As respostas abaixo são uma base de estudo alinhada ao código do projeto. Leia e adapte a redação ao seu entendimento. Em especial, a resposta B8 deve refletir as dificuldades que você realmente encontrou.
 
 ### B1. O que é persistência de dados? O que aconteceria se usássemos apenas uma `MutableList` na `MainActivity`?
 
@@ -248,5 +245,23 @@ Um Singleton permite reutilizar uma única instância do banco de dados durante 
 
 ### B8. Reflexão pessoal: quais foram as principais dificuldades e como foram resolvidas? Em qual app real Room seria útil?
 
-Uma das principais dificuldades que encontrei neste projeto foi compreender como configurar o Room e conectar o banco de dados com a interface do aplicativo. Também tive que entender como cadastrar, listar, buscar, atualizar e excluir produtos, além de validar os campos para evitar informações incorretas. Essas dificuldades foram resolvidas com a análise dos códigos, a organização das classes e a realização de testes no Android Studio. Com isso, consegui compreender melhor como funciona a persistência de dados em aplicativos Android. Um exemplo de aplicativo real em que o Room seria útil é um sistema de controle de estoque de uma loja. Ele permitiria cadastrar produtos, registrar preços e quantidades disponíveis e consultar essas informações mesmo quando o aplicativo fosse fechado, pois os dados ficariam armazenados localmente no dispositivo.#   T P - 0 6 - R O O M  
- 
+**Personalize este exemplo para corresponder à sua experiência:** uma dificuldade possível neste projeto é entender como conectar o XML à `MainActivity` usando ViewBinding e como separar a entidade, o DAO e a classe do banco. Outra dificuldade pode ser configurar as dependências do Room e lembrar que as operações de banco precisam ser chamadas de forma assíncrona com corrotinas. Para resolver esses problemas, eu revisaria as mensagens de erro do Android Studio, conferiria os imports e testaria cada função separadamente no emulador. A persistência local com Room seria útil em um aplicativo de estoque de uma loja, porque os produtos e suas quantidades poderiam continuar acessíveis mesmo sem internet. Nesse cenário, eu armazenaria nome, preço, quantidade e descrição localmente, permitiria consultar e atualizar os registros e sincronizaria as informações com um servidor quando houvesse conexão, caso o sistema precisasse compartilhar os dados entre dispositivos.
+
+## Como executar
+
+1. Extraia o ZIP para uma pasta local.
+2. Abra o Android Studio e escolha **Open**; selecione a pasta `AppRoomProduto` que contém `settings.gradle.kts`.
+3. Aguarde a sincronização do Gradle e instale o Android SDK 35 caso o IDE solicite.
+4. Selecione um emulador Android (API 24 ou superior) ou conecte um aparelho com depuração USB ativada.
+5. Pressione **Run** para executar o app.
+6. Cadastre dois ou três produtos e teste lista, busca, atualização e exclusões.
+7. Faça as capturas reais para `docs/prints/`, preencha nome/RA/professor no início deste arquivo e revise especialmente a resposta B8.
+
+## Publicar no GitHub
+
+1. Crie um repositório **público** chamado `AppRoomProduto` no GitHub.
+2. Envie todos os arquivos do projeto, incluindo este `README.md` e a pasta `docs/prints/` com as capturas.
+3. Confira se o README aparece corretamente e se as imagens foram adicionadas.
+4. Envie ao professor o link do repositório público.
+
+**Importante:** este pacote contém o código-fonte para abrir e executar no Android Studio; não é um APK já compilado. A compilação precisa ser feita no Android Studio com o SDK Android instalado.
